@@ -1,4 +1,85 @@
 return {
+    -- NOTE: Material
+    {
+      "marko-cerovac/material.nvim",
+      config = function()
+        require('material').setup({
+          contrast = {
+            terminal = false, -- Enable contrast for the built-in terminal
+            sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
+            floating_windows = true, -- Enable contrast for floating windows
+            cursor_line = false, -- Enable darker background for the cursor line
+            lsp_virtual_text = false, -- Enable contrasted background for lsp virtual text
+            non_current_windows = false, -- Enable contrasted background for non-current windows
+            filetypes = {}, -- Specify which filetypes get the contrasted (darker) background
+          },
+
+          styles = { -- Give comments style such as bold, italic, underline etc.
+            comments = { --[[ italic = true ]] },
+            strings = { --[[ bold = true ]] },
+            keywords = { --[[ underline = true ]] },
+            functions = { --[[ bold = true, undercurl = true ]] },
+            variables = {},
+            operators = {},
+            types = {},
+          },
+
+          plugins = { 
+            -- Uncomment the plugins that you use to highlight them
+            -- Available plugins:
+              -- "blink",
+              -- "coc",
+              -- "colorful-winsep",
+              -- "dap",
+              -- "dashboard",
+              -- "eyeliner",
+              -- "fidget",
+              -- "flash",
+              -- "gitsigns",
+              -- "harpoon",
+              -- "hop",
+              -- "illuminate",
+              -- "indent-blankline",
+              -- "lspsaga",
+              -- "mini",
+              -- "neo-tree",
+              -- "neogit",
+              -- "neorg",
+              -- "neotest",
+              -- "noice",
+              -- "nvim-cmp",
+              -- "nvim-navic",
+              -- "nvim-notify",
+              -- "nvim-tree",
+              -- "nvim-web-devicons",
+              -- "rainbow-delimiters",
+              -- "sneak",
+              -- "telescope",
+              -- "trouble",
+              -- "which-key",
+          },
+
+          disable = {
+            colored_cursor = true, -- Disable the colored cursor
+            borders = false, -- Disable borders between vertically split windows
+            background = true, -- Prevent the theme from setting the background (NeoVim then uses your terminal background)
+            term_colors = false, -- Prevent the theme from setting terminal colors
+            eob_lines = true -- Hide the end-of-buffer lines
+          },
+
+          high_visibility = {
+            lighter = false, -- Enable higher contrast text for lighter style
+            darker = false -- Enable higher contrast text for darker style
+          },
+
+          lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
+          async_loading = true, -- Load parts of the theme asynchronously for faster startup (turned on by default)
+          custom_colors = nil, -- If you want to override the default colors, set this to a function
+          custom_highlights = {}, -- Overwrite highlights with your own
+        })
+      end,
+    },
+
     -- NOTE: Rose pine
     {
         "rose-pine/neovim",
@@ -7,20 +88,19 @@ return {
         config = function()
             require("rose-pine").setup({
                 variant = "main", -- auto, main, moon, or dawn
-                dark_variant = "main", -- main, moon, or dawn
+                dark_variant = "moon", -- main, moon, or dawn
                 dim_inactive_windows = false,
                 styles = {
                     bold = true,
                     italic = false,
-                    transparency = false,
+                    transparency = true,
                 },
                 enable = {
                     terminal = true,
                     legacy_highlights = true,
                     migrations = true,  -- Handle deprecated options automatically
                 },
-                highlight_groups = {
-                    ColorColumn = { bg = "#1C1C21" },
+                highlight_groups = { ColorColumn = { bg = "#1C1C21" },
                     -- Normal = { bg = "#000000" }, -- Main background remains transparent
                     NormalFloat = { bg = "#1C1C21" },
                     Pmenu = { bg = "#191724" }, -- Completion menu background
@@ -62,13 +142,63 @@ return {
 
             -- HACK: set this on the color you want to be persistent
             -- when quit and reopening nvim
-            -- vim.cmd("colorscheme rose-pine")
         end,
+    },
+    -- NOTE: nightfox
+    {
+        "EdenEast/nightfox.nvim",
+        -- priority = 1000,
+        config = function()
+          require('nightfox').setup({
+            options = {
+              -- Compiled file's destination location
+              compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+              compile_file_suffix = "_compiled", -- Compiled file suffix
+              transparent = true,     -- Disable setting background
+              terminal_colors = true,  -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+              dim_inactive = false,    -- Non focused panes set to alternative background
+              module_default = true,   -- Default enable value for modules
+              colorblind = {
+                enable = false,        -- Enable colorblind support
+                simulate_only = false, -- Only show simulated colorblind colors and not diff shifted
+                severity = {
+                  protan = 0,          -- Severity [0,1] for protan (red)
+                  deutan = 0,          -- Severity [0,1] for deutan (green)
+                  tritan = 0,          -- Severity [0,1] for tritan (blue)
+                },
+              },
+              styles = {               -- Style to be applied to different syntax groups
+                comments = "NONE",     -- Value is any valid attr-list value `:help attr-list`
+                conditionals = "NONE",
+                constants = "NONE",
+                functions = "NONE",
+                keywords = "italic",
+                numbers = "NONE",
+                operators = "NONE",
+                strings = "NONE",
+                types = "NONE",
+                variables = "bold",
+              },
+              inverse = {             -- Inverse highlight for different types
+                match_paren = false,
+                visual = false,
+                search = false,
+              },
+              modules = {             -- List of various plugins and additional options
+                -- ...
+              },
+            },
+            palettes = {},
+            specs = {},
+            groups = {},
+          })
+          vim.cmd("colorscheme carbonfox")
+      end,
     },
     -- NOTE: gruvbox
     {
         "ellisonleao/gruvbox.nvim",
-        -- priority = 1000 ,
+        -- priority = 1000,
         config = function()
             require("gruvbox").setup({
                 terminal_colors = true,
@@ -334,8 +464,6 @@ return {
                     -- terminal = false,
                 },
             })
-
-            vim.cmd.colorscheme("catppuccin")
         end,
     },
 }

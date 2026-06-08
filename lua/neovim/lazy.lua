@@ -14,8 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup(
     {
-        { import = "username.plugins" },
-        { import = "username.plugins.lsp" },
+        { import = "neovim.plugins" },
+--        { import = "username.plugins.lsp" },
     },
     {
         checker = {

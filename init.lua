@@ -1,2 +1,2 @@
-require("username.core")
-require("username.lazy")
+require("neovim.core")
+require("neovim.lazy")
