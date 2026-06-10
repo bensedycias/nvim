@@ -1,18 +1,15 @@
 return {
   "nvim-telescope/telescope.nvim",
-  branch = "0.1.x",
   dependencies = {
-    "nvim-lua/plenary.nvim", {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make"
-    }, "nvim-tree/nvim-web-devicons",
+    "nvim-lua/plenary.nvim",
+    {"nvim-telescope/telescope-fzf-native.nvim", build = "make"},
+    "nvim-tree/nvim-web-devicons",
     "andrew-george/telescope-themes",
   },
 
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
-    local builtin = require("telescope.builtin")
 
     telescope.load_extension("fzf")
     telescope.load_extension("themes")
@@ -32,7 +29,7 @@ return {
             enable_live_preview = true,
             persist = {
               enabled = true,
-              path = vim.fn.stdpath("config") .. "/lua/colorscheme.lua"
+              path = vim.fn.stdpath("config") .. "/lua/current-theme.lua",
             },
           },
         },
@@ -40,7 +37,13 @@ return {
     })
 
     -- Keymaps
-    vim.keymap.set("n", "<leader>pr", "<cmd>Telescope oldfiles<CR>", {desc = "Fuzzy find recent files"})
-    vim.keymap.set("n", "<leader>ths", "<cmd>Telescope themes<CR>", { noremap = true, silent = true, desc = "Theme Switcher" })
+    vim.keymap.set(
+      "n", "<leader>pr", "<cmd>Telescope oldfiles<CR>",
+      {desc = "Fuzzy find recent files"}
+    )
+    vim.keymap.set(
+      "n", "<leader>th", "<cmd>Telescope themes<CR>",
+      {noremap = true, silent = true, desc = "Theme Switcher"}
+    )
   end
 }

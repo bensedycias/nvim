@@ -9,9 +9,11 @@ return {
             local treesitter = require("nvim-treesitter")
 
             local ensure_installed = {
-                "json", "javascript", "typescript", "tsx", "go", "yaml", "html", "css", "python",
-                "http", "prisma", "svelte", "graphql", "bash", "vim", "dockerfile",
-                "gitignore", "query", "vimdoc", "c", "java", "rust", "ron", "cpp"
+                "json", "javascript", "typescript", "tsx", 
+                "go", "yaml", "html", "css", "python", "http",
+                "prisma", "svelte", "graphql", "bash", "vim",
+                "dockerfile", "gitignore", "query", "vimdoc",
+                "c", "java", "rust", "ron", "cpp"
             }
 
             treesitter.install(ensure_installed)

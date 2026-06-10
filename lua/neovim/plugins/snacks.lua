@@ -119,18 +119,14 @@ return {
       dashboard = {
         enable = true,
         sections = {
-          {section = "header"},
+          { section = "terminal",
+            cmd = "ascii-image-converter '/home/Rookman/Pictures/Wallpapers/garntRPG/Wallpapers/Desktop Wallpaper - 16x9 UHD/WITHOUT Film Border/Arc-Raiders_28_UHD-Wallpaper_01_NO-BORDER.jpg' -C -c",
+            height = 20,
+            random = 10,
+            indent = 2,
+          },
           {section = "keys", gap = 1, padding = 1},
           {section = "startup"},
---          {
---            section = "terminal",
---            cmd = "ascii-image-converter ~/Pictures/Wallpapers/garntRPG/Prints/3x4Prints/asp-28_210_3x4-PRINTS.png -C -c",
---            padding = 20,
---            random = 10,
---            indent = 4,
---            height = 160,
---            pane = 2,
---          }
         },
       },
     },
@@ -145,11 +141,10 @@ return {
       {"<leader>pf", function() require("snacks").picker.files() end, desc = "Find Files (Snacks Picker)"},
       {"<leader>pc", function() require("snacks").picker.files({cwd = vim.fn.stdpath("config")}) end, desc = "Find Config File"},
       {"<leader>ps", function() require("snacks").picker.grep() end, desc = "Grep Word"},
-      {"<leader>pws", function() require("snacks").picker.grep_word() end, desc = "Search Visual selection or word", mode = {"n", "x"}},
-      {"<leader>pk", function() require("snacks").picker.keymaps({layout = "ivy"}) end, desc = "Search Keymaps (Snacks Picker)"},
-
       {"<leader>gbr", function() require("snacks").picker.git_branches({layout = "select"}) end, desc = "Pick and Switch Git Branches"},
-      {"<leader>th", function() require("snacks").picker.colorschemes({layout = "ivy"}) end, desc = "Pick Color Schemes"},
+
+      -- Help and Reminders
+      {"<leader>pk", function() require("snacks").picker.keymaps({layout = "ivy"}) end, desc = "Search Keymaps (Snacks Picker)"},
       {"<leader>vh", function() require("snacks").picker.help() end, desc = "Help Pages"},
     }
   }

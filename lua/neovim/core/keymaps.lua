@@ -30,24 +30,23 @@ vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search hl", silent = t
 -- prevent x delete from registering when next paste
 vim.keymap.set("n", "x", '"_x', opts)
 
--- Replace the word cursor is on globally
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace word cursor is on globally" })
-
 -- tab stuff
-vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>")   --open new tab
-vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>") --close current tab
-vim.keymap.set("n", "<leader>tn", "<cmd>tabn<CR>")     --go to next
-vim.keymap.set("n", "<leader>tp", "<cmd>tabp<CR>")     --go to pre
+vim.keymap.set("n", "<leader>tt", "<cmd>tabnew<CR>")   --open new tab
+vim.keymap.set("n", "<leader>to", "<cmd>tabclose<CR>") --close current tab
+vim.keymap.set("n", "<Tab>", "<cmd>tabn<CR>")     --go to next
+vim.keymap.set("n", "<S-Tab>", "<cmd>tabp<CR>")     --go to pre
 
---split management
+-- split management
 vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+vim.keymap.set("n", "<leader>ss", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 vim.keymap.set("n", "<leader>sq", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
+
+vim.keymap.set("n", "Zz", "<cmd>wqa<CR>", { desc = "fast quit" })
 
 -- Copy filepath to the clipboard
 vim.keymap.set("n", "<leader>fp", function()
