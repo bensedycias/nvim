@@ -120,10 +120,10 @@ return {
         enable = true,
         sections = {
           { section = "terminal",
-            cmd = "ascii-image-converter '/home/Rookman/Pictures/Wallpapers/garntRPG/Wallpapers/Desktop Wallpaper - 16x9 UHD/WITHOUT Film Border/Arc-Raiders_28_UHD-Wallpaper_01_NO-BORDER.jpg' -C -c",
-            height = 20,
+            cmd = "figlet -f slant 'PathosVim'",
+            height = 6,
             random = 10,
-            indent = 2,
+            indent = 4,
           },
           {section = "keys", gap = 1, padding = 1},
           {section = "startup"},
