@@ -2,16 +2,22 @@ local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = " "
 
+-- generic binds
 vim.keymap.set("n", ";", ":")
 
-vim.keymap.set("n", "<leader><leader>", function() vim.cmd("so") end)
+-- term navigation
+vim.keymap.set("t", "<A-h>", "<C-\\><C-n><C-w>h")
+vim.keymap.set("t", "<A-j>", "<C-\\><C-n><C-w>j")
+vim.keymap.set("t", "<A-k>", "<C-\\><C-n><C-w>k")
+vim.keymap.set("t", "<A-l>", "<C-\\><C-n><C-w>l")
+vim.keymap.set("t", "<A-Tab>", "<cmd>tabn<CR>")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "moves lines down in visual selection" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "moves lines up in visual selection" })
 
 vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "move down in buffer with cursor centered" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "move up in buffer with cursor centered" })
+vim.keymap.set("n", "<C-d>", "<C-d>", { desc = "move down in buffer with cursor centered" })
+vim.keymap.set("n", "<C-u>", "<C-u>", { desc = "move up in buffer with cursor centered" })
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
@@ -30,6 +36,11 @@ vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search hl", silent = t
 -- prevent x delete from registering when next paste
 vim.keymap.set("n", "x", '"_x', opts)
 
+vim.keymap.set("i", "<C-h>", "<Left>")
+vim.keymap.set("i", "<C-j>", "<Down>")
+vim.keymap.set("i", "<C-k>", "<Up>")
+vim.keymap.set("i", "<C-l>", "<Right>")
+
 -- tab stuff
 vim.keymap.set("n", "<leader>tt", "<cmd>tabnew<CR>")   --open new tab
 vim.keymap.set("n", "<leader>to", "<cmd>tabclose<CR>") --close current tab
@@ -46,7 +57,8 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
-vim.keymap.set("n", "Zz", "<cmd>wqa<CR>", { desc = "fast quit" })
+vim.keymap.set("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative line number"})
+vim.keymap.set("n", "qq", "<cmd>wqa<CR>", { desc = "fast quit" })
 
 -- Copy filepath to the clipboard
 vim.keymap.set("n", "<leader>fp", function()

@@ -2,13 +2,12 @@ return {
   -- NOTE: nightfox
   {
     "EdenEast/nightfox.nvim",
-    lazy = false, priority = 1000,
+    priority = 1000, lazy = true,
     config = function()
       require('nightfox').setup({
         options = {
           -- Compiled file's destination location
-          compile_path = vim.fn.stdpath("cache") .. "/nightfox",
-          compile_file_suffix = "_compiled", -- Compiled file suffix
+          compile_path = vim.fn.stdpath("cache") .. "/nightfox", compile_file_suffix = "_compiled", -- Compiled file suffix
           transparent = true,     -- Disable setting background
           terminal_colors = true,  -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
           dim_inactive = false,    -- Non focused panes set to alternative background
@@ -51,7 +50,7 @@ return {
   },
   {
     "eldritch-theme/eldritch.nvim",
-    lazy = false, priority = 1000,
+    priority = 1000, lazy = true,
     opts = {},
     config = function()
       require("eldritch").setup({
@@ -92,7 +91,7 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin-nvim",
-    priority = 1000,
+    priority = 1000, lazy = true,
     config = function()
       require("catppuccin").setup({
         flavour = "mocha",
@@ -158,7 +157,7 @@ return {
   },
   {
     "olivercederborg/poimandres.nvim",
-    lazy = false, priority = 1000,
+    priority = 1000, lazy = true,
     config = function()
       require('poimandres').setup {
         bold_vert_split = false, -- use bold vertical separators
@@ -167,6 +166,72 @@ return {
         disable_float_background = true, -- disable background for floats
         disable_italics = false, -- disable italics
       }
-    end,   
+    end
+  },
+  {
+    "shaunsingh/nord.nvim",
+    priority = 1000, lazy = true,
+    config = function()
+      vim.g.nord_contrast = false
+      vim.g.nord_borders = false
+      vim.g.nord_disable_background = true
+      vim.g.nord_uniform_diff_background = false
+      vim.g.nord_italic = false
+      vim.g.nord_bold = false
+    end
+  },
+  {
+    "tiagovla/tokyodark.nvim",
+    priority = 1000, lazy = true,
+    config = function()
+      require('tokyodark').setup {
+        transparent_background = true
+      }
+    end
+  },
+  {
+    "oskarnurm/koda.nvim",
+    lazy = false, priority = 1000,
+    config = function()
+      require("koda").setup({
+          transparent = true, -- enable for transparent backgrounds
+
+          -- Set the variants to use when auto-switching based on vim.o.background
+          -- Valid values: 'dark', 'light', 'moss', 'glade'
+          theme = { dark = "dark", },
+
+          -- Automatically enable highlights only for plugins installed by your plugin manager
+          -- Currently only supports `lazy.nvim`, `mini.deps` and `vim.pack`
+          auto = true,  -- disable to load ALL available plugin highlights
+
+          cache = true, -- caches the theme for better performance
+
+          -- Style to be applied to different syntax groups
+          -- Common use case would be to set either `italic = true` or `bold = true` for a desired group
+          -- See `:help nvim_set_hl` for more valid values
+          styles = {
+             functions = { bold = true },
+             keywords  = { italic = true },
+             comments  = { italic = true },
+             strings   = {},
+             constants = {}, -- includes numbers, booleans
+          },
+
+          -- Override colors for the active variant
+          -- Available keys (e.g., 'func') can be found in lua/koda/palette/
+          colors = {
+            -- func = "#4078F2",
+            -- keyword = "#A627A4",
+          },
+
+          -- You can modify or extend highlight groups using the `on_highlights` configuration option
+          -- Any changes made take effect when highlights are applied
+          on_highlights = function(hl, c)
+            -- hl.LineNr = { fg = c.info } -- change a specific highlight to use a different palette color
+            -- hl.Comment = { fg = c.emphasis, italic = true } -- modify a syntax group (add bold, italic, etc)
+            -- hl.RainbowDelimiterRed = { fg = "#fb2b2b" } -- add a custom highlight group for another plugin
+          end,
+      })
+    end
   },
 }

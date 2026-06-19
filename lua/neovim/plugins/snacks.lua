@@ -1,8 +1,7 @@
 return {
   {
     "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
+    priority = 1000, lazy = false,
     opts = {
       explorer = {
         enabled = true,
@@ -36,17 +35,13 @@ return {
             preview = false,
             layout = {
               backdrop = false,
-              width = 0.6,
-              min_width = 80,
-              height = 0.4,
-              min_height = 10,
-              box = "vertical",
-              border = "rounded",
-              title = "{title}",
-              title_pos  = "center",
+              width = 0.6, min_width = 80,
+              height = 0.4, min_height = 10,
+              box = "vertical", border = "rounded",
+              title = "{title}", title_pos  = "center",
               {
-                win = "input",
                 height = 1,
+                win = "input",
                 border = "bottom"
               },
               {
@@ -54,10 +49,10 @@ return {
                 border = "none"
               },
               {
-                win = "preview",
-                title = "{preview}",
                 width = 0.6,
                 height = 0.4,
+                win = "preview",
+                title = "{preview}",
                 border = "top"
               },
             },
@@ -117,7 +112,7 @@ return {
         }
       },
       dashboard = {
-        enable = true,
+        enabled = true,
         sections = {
           { section = "terminal",
             cmd = "figlet -f slant 'PathosVim'",
@@ -129,17 +124,20 @@ return {
           {section = "startup"},
         },
       },
+      scroll = {
+        enabled = true,
+      },
     },
     keys = {
       {"<leader>lg", function() require("snacks").lazygit() end, desc = "Lazygit"},
       {"<leader>gl", function() require("snacks").lazygit.log() end, desc = "Lazygit Logs"},
       {"<leader>es", function() require("snacks").explorer() end, desc = "Open Snacks Explorer"},
       {"<leader>rN", function() require("snacks").rename.rename_files() end, desc = "Fast Rename Current Files"},
-      {"<leader>dB", function() require("snacks").bufdelete() end, desc = "Delete or Close Buffer (Confirm)"},
 
       -- Snacks Picker
       {"<leader>pf", function() require("snacks").picker.files() end, desc = "Find Files (Snacks Picker)"},
       {"<leader>pc", function() require("snacks").picker.files({cwd = vim.fn.stdpath("config")}) end, desc = "Find Config File"},
+      {"<leader>ph", function() require("snacks").picker.files({cwd = "~/.config/hypr"}) end, desc = "Find Config File"},
       {"<leader>ps", function() require("snacks").picker.grep() end, desc = "Grep Word"},
       {"<leader>gbr", function() require("snacks").picker.git_branches({layout = "select"}) end, desc = "Pick and Switch Git Branches"},
 

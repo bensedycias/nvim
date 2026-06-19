@@ -2,8 +2,7 @@ return {
     -- NOTE: treesitter CLI installation needed
     {
         "nvim-treesitter/nvim-treesitter",
-        branch = "main",
-        lazy = false,
+        branch = "main", lazy = false, priority = 1000,
         build = ":TSUpdate",
         config = function()
             local treesitter = require("nvim-treesitter")
