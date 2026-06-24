@@ -2,8 +2,16 @@ local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = " "
 
--- generic binds
+-- text navigation
 vim.keymap.set("n", ";", ":")
+
+vim.keymap.set("i", "<C-h>", "<Left>")
+vim.keymap.set("i", "<C-j>", "<Down>")
+vim.keymap.set("i", "<C-k>", "<Up>")
+vim.keymap.set("i", "<C-l>", "<Right>")
+
+vim.keymap.set("n", "<A-j>", "<Down>^")
+vim.keymap.set("n", "<A-k>", "<Up>^")
 
 -- term navigation
 vim.keymap.set("t", "<A-h>", "<C-\\><C-n><C-w>h")
@@ -35,11 +43,6 @@ vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search hl", silent = t
 
 -- prevent x delete from registering when next paste
 vim.keymap.set("n", "x", '"_x', opts)
-
-vim.keymap.set("i", "<C-h>", "<Left>")
-vim.keymap.set("i", "<C-j>", "<Down>")
-vim.keymap.set("i", "<C-k>", "<Up>")
-vim.keymap.set("i", "<C-l>", "<Right>")
 
 -- tab stuff
 vim.keymap.set("n", "<leader>tt", "<cmd>tabnew<CR>")   --open new tab
